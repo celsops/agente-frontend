@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/visitas.css">
+
+    <script src="../js/sidebar.js"></script>
+    <title>Cadastro Cidadão de rua</title>
+
+    <style>
+        .btn-finalizar{
+            background-color: #00BCD4;
+            border:none;
+            color:#ffffff;
+        }
+        body{
+            color: #878787;
+        }
+        input::placeholder{
+            color: #B8B8B8
+        }
+        input{
+            background-color: #E6E6E6;
+        }
+    </style>
+</head>
+<body>
+    <!-- side bar -->
+    <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+            <img src="../icon/arrow_back.svg" class="icon" alt="">
+            </a>
+            <a href="mapa.html">Mapa</a>
+            <a href="cadastro-moradia.html">Visita</a>
+            <a href="notificacoes.html">Notificações</a>
+            <a href="painel.html">Painel</a>
+    </div>
+    <nav class="navbar">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">
+            <img class="icon" src="../icon/reorder.svg" alt="">
+            <span class="title">Cidadão de rua</span>
+        </span>
+    </nav>
+    <div class="container">
+        <img src="../img/etapa4.png" class="etapa">
+            <form>
+                <div class="form-group">
+
+                    <input type="number" class="form-control"  placeholder="Nº SUS" name="numeroSus" />
+                    <input type="text" class="form-control"  placeholder="Tempo na rua" name="tempo_na_rua" />
+                    <select class="classic" name="alimenta_dia" required>
+                        <option  disabled selected>Alimenta dia</option>
+                        <option value=1>Sim</option>
+                        <option value=0>Não</option>
+                    </select>
+                    <input type="text" class="form-control"  placeholder="Origem alimentação" name="origem_alimentacao" />
+                    <select class="classic" name="higiene_pessoal" required>
+                        <option  disabled selected>Higiene Pessoal</option>
+                        <option value=1>Sim</option>
+                        <option value=0>Não</option>
+                    </select>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col form-check">
+                                    <input class="form-check-input" type="checkbox"  id="check-input-recebe-beneficio">
+                                    <label class="form-check-label" for="check-input-recebe-beneficio">
+                                        Recebe benefício
+                                    </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col form-check">
+                                <input class="form-check-input" type="checkbox"  id="check-input-referencia-familiar">
+                                <label class="form-check-label" for="check-input-referencia-familiar">
+                                    Possui referência familiar
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <span id="mensagem"></span>
+                </div>
+                <input onclick="enviaDados()" type="button" value="Finalizar" class="form-control btn btn-finalizar">
+            </div>
+          </form>
+          <script>
+            function enviaDados() {
+              var xhttp;
+              xhttp = new XMLHttpRequest();
+              xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                  console.log(this.responseText);
+                  if (this.responseText=="OK!"){
+                    alert("Dados salvos com sucesso!");
+                    window.location.href = "main.html"
+                  }
+                  else {
+                    document.getElementById("mensagem").innerHTML = this.responseText;
+                  }
+                }
+              };
+
+              numeroSus = document.getElementsByName('numeroSus')[0].value;
+              tempo_na_rua = document.getElementsByName('tempo_na_rua')[0].value;
+              alimenta_dia = document.getElementsByName('alimenta_dia')[0].value;
+              origem_alimentacao = document.getElementsByName('origem_alimentacao')[0].value;
+              higiene_pessoal = document.getElementsByName('higiene_pessoal')[0].value;
+
+              recebe_beneficio = document.getElementById('check-input-recebe-beneficio').checked;
+              possui_referencia_familiar = document.getElementById('check-input-referencia-familiar').checked;
+
+              let dados_obj =
+                {
+                  "num_sus":numeroSus,
+                  "col_tempo_rua":tempo_na_rua,
+                  "col_alimenta_dia":alimenta_dia,
+                  "col_higiene_pessoal":higiene_pessoal,
+                  "col_recebe_beneficio":recebe_beneficio,
+                  "col_origem_alimentacao":origem_alimentacao,
+                  "col_possui_referencia_familiar":possui_referencia_familiar
+              }
+              // console.log(dados_obj);
+              url = "http://localhost/agente/rua/create.php";
+              let dados_json = JSON.stringify(dados_obj);
+              url_dados = url+"?dados="+dados_json;
+              console.log(url_dados);
+              xhttp.open("GET", url+"?dados="+dados_json, true);
+              xhttp.send();
+            }
+        </script>
+    </div>
+</body>
+</html>

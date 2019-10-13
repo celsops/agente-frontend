@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/visitas.css">
+
+    <script src="../js/sidebar.js"></script>
+    <title>Cadastro moradia</title>
+</head>
+<body>
+    <!-- side bar -->
+    <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+            <img src="../icon/arrow_back.svg" class="icon" alt="">
+            </a>
+            <a href="mapa.html">Mapa</a>
+            <a href="cadastro-moradia.html">Visita</a>
+            <a href="notificacoes.html">Notificações</a>
+            <a href="painel.html">Painel</a>
+    </div>
+    <nav class="navbar">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">
+        <img class="icon" src="../icon/reorder.svg" alt="">
+        <span class="title">Cadastro Moradia</span>
+        </span>
+    </nav>
+    <div class="container">
+
+        <img src="../img/etapa1.png" class="etapa" alt="">
+        <br>
+        <form >
+            <div class="form-group">
+                <div class="container row" aria-details="Cep e número">
+                    <input type="number" class="col form-control" style="padding-left: 10px"  placeholder="CEP" name="cep" required>
+                    <input type="number" class="col form-control"  style="margin-left: 10px;" placeholder="Número" name="numeroCasa" required>
+                </div>
+                <input type="text" class="form-control"  placeholder="Rua" name="rua" required>
+                <select class="classic" aria-details="Abastecimento de água" name="agua" required>
+                    <option value="" disabled selected>Abastecimento de água</option>
+                    <option value="Rede Encanada até o Domicílio">Rede Encanada até o Domicílio</option>
+                    <option value="Carro Pipa">Carro Pipa</option>
+                    <option value="Poço/Nascente no Domicílio">Poço/Nascente no Domicílio</option>
+                    <option value="Cisterna">Cisterna</option>
+                    <option value="Outro">Outro</option>
+                </select>
+                <select class="classic" aria-details="Animais" name="animais" required>
+                    <option value="" disabled selected>Tem animais?</option>
+                    <option value="sim">Sim</option>
+                    <option value="nao">Não</option>
+                </select>
+                <select class="classic" aria-details="Esgoto" name="esgoto" required>
+                    <option value="" disabled selected>Forma de escotamento do banheiro ou sanitário</option>
+                    <option value="Rede Coletora de Esgoto ou Pluvial">Rede Coletora de Esgoto ou Pluvial</option>
+                    <option value="Fossa Séptica">Fossa Séptica</option>
+                    <option value="Fossa Rudimentar">Fossa Rudimentar</option>
+                    <option value="Direto para um Rio, Lago ou Mar">Direto para um Rio, Lago ou Mar</option>
+                    <option value="Céu Aberto">Céu Aberto</option>
+                    <option value="Outra Forma">Outra Forma</option>
+                </select>
+                <select class="classic" aria-details="Lixo" name="lixo" required>
+                    <option value="" disabled selected>Destino do lixo</option>
+                    <option value="Coletado">Coletado</option>
+                    <option value="Queimado/Enterrado">Queimado/Enterrado</option>
+                    <option value="Céu Aberto">Céu Aberto</option>
+                    <option value="Outro">Outro</option>
+                </select>
+
+                <input type="number" class="form-control"  placeholder="Nº SUS Responsável" name="numeroSus" required>
+                <br>
+                <span id="mensagem" ></span>
+                <input onclick="enviaDados()" type="button" value="Proximo" class="btn btn-proximo">
+
+            </div>
+        </form>
+        <script>
+          function enviaDados() {
+            var xhttp;
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+                if (this.responseText=="OK!"){
+                  alert("Dados salvos com sucesso!");
+                  window.location.href = "cadastro-individual.html"
+                }
+                else {
+                  document.getElementById("mensagem").innerHTML = this.responseText;
+                }
+              }
+            };
+
+            cep = document.getElementsByName('cep')[0].value;
+            agua = document.getElementsByName('agua')[0].value;
+            numeroCasa = document.getElementsByName('numeroCasa')[0].value;
+            lixo = document.getElementsByName('lixo')[0].value;
+            esgoto = document.getElementsByName('esgoto')[0].value;
+            animais = document.getElementsByName('animais')[0].value;
+            numeroSus = document.getElementsByName('numeroSus')[0].value;
+            rua = document.getElementsByName('rua')[0].value;
+
+            let dados_obj =
+              {
+                "col_cep":cep,
+                "col_agua":agua,
+                "col_numero_casa":numeroCasa,
+                "col_lixo":lixo,
+                "col_esgoto":esgoto,
+                "col_tem_animal":animais,
+                "numero_sus":numeroSus,
+                "col_rua_moradia":rua
+            }
+            console.log(dados_obj);
+            url = "http://localhost/agente/moradia/create.php";
+            let dados_json = JSON.stringify(dados_obj);
+            url_dados = url+"?dados="+dados_json;
+            console.log(url_dados);
+            xhttp.open("GET", url+"?dados="+dados_json, true);
+            xhttp.send();
+          }
+      </script>
+    </div>
+
+</body>
+</html>

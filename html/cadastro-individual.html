@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/visitas.css">
+    <script src="../js/sidebar.js"></script>
+    <title>Cadastro</title>
+
+    <style>
+        body{
+            color: #878787;
+        }
+        input::placeholder{
+            color: #B8B8B8
+        }
+        input{
+            background-color: #E6E6E6;
+        }
+        .btn-visitas{
+            background-color: #00BCD4;
+            border:none;
+            color:#ffffff;
+
+        }
+    </style>
+</head>
+<body>
+    <!-- side bar -->
+    <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+            <img src="../icon/arrow_back.svg" class="icon" alt="">
+            </a>
+            <a href="mapa.html">Mapa</a>
+            <a href="cadastro-moradia.html">Visita</a>
+            <a href="notificacoes.html">Notificações</a>
+            <a href="painel.html">Painel</a>
+    </div>
+    <nav class="navbar">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">
+        <img class="icon" src="../icon/reorder.svg" alt="">
+        <span class="title">Cadastro Individual</span>
+        </span>
+    </nav>
+
+
+    <div class="container">
+        <img class="etapa" src="../img/etapa2.png" alt="">
+        <br>
+        <form>
+            <div class="form-group">
+                <input type="number" class="form-control"  placeholder="Nº SUS" name="numeroSus">
+                <select class="classic" name="parentesco">
+                    <option value="" disabled selected>Parentesco com o responsável familiar</option>
+                    <option value="Cônjuge/Companheiro(a)">Cônjuge/Companheiro(a)</option>
+                    <option value="Pai/Mãe">Pai/Mãe</option>
+                    <option value="Sogro(a)">Sogro(a)</option>
+                    <option value="Filho(a)">Filho(a)</option>
+                    <option value="Enteado(a)">Enteado(a)</option>
+                    <option value="Neto(a)/Bisneto(a)">Neto(a)/Bisneto(a)</option>
+                    <option value="Irmão/Irmã">Irmão/Irmã</option>
+                    <option value="Genro/Nora">Genro/Nora</option>
+                    <option value="Outro parente">Outro parente</option>
+                    <option value="Não parente">Não parente</option>
+                </select>
+                <select class="classic" name="escolaridade">
+                    <option value="" disabled selected>Escolaridade</option>
+                    <option value="Creche">Creche</option>
+                    <option value="Ensino Fundamental EJA - séries finais (Supletivo 5a a 8a)">Ensino Fundamental EJA - séries finais (Supletivo 5a a 8a)</option>
+                    <option value="Pré-escola (exceto CA)">Pré-escola (exceto CA)</option>
+                    <option value="Ensino Médio, Médio 2o Ciclo (Científico, Técnico etc.)">Ensino Médio, Médio 2o Ciclo (Científico, Técnico etc.)</option>
+                    <option value="Classe de Alfabetização - CA">Classe de Alfabetização - CA</option>
+                    <option value="Ensino Médio Especial">Ensino Médio Especial</option>
+                    <option value="Ensino Fundamental 1a a 4a séries">Ensino Fundamental 1a a 4a séries</option>
+                    <option value="Ensino Médio EJA (Supletivo)">Ensino Médio EJA (Supletivo)</option>
+                    <option value="Ensino Fundamental 5a a 8a séries">Ensino Fundamental 5a a 8a séries</option>
+                    <option value="Superior, Aperfeiçoamento, Especialização, Mestrado,Doutorado">Superior, Aperfeiçoamento, Especialização, Mestrado,Doutorado</option>
+                    <option value="Ensino Fundamental Completo">Ensino Fundamental Completo</option>
+                    <option value="Ensino Fundamental Especial">Ensino Fundamental Especial</option>
+                    <option value="Ensino Fundamental EJA - séries iniciais(Supletivo 1a a 4a)">Ensino Fundamental EJA - séries iniciais(Supletivo 1a a 4a)</option>
+                    <option value="Alfabetização para Adultos (Mobral etc.)">Alfabetização para Adultos (Mobral etc.)</option>
+                    <option value="Nenhum">Nenhum</option>
+                </select>
+                <select class="classic" name="sexo">
+                    <option value="" disabled selected>Sexo</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                </select>
+                <select class="classic" name="deficiencia">
+                    <option value="" disabled selected>Deficiência</option>
+                    <option value="Visual">Visual</option>
+                    <option value="Auditiva">Auditiva</option>
+                    <option value="Intelectual/Cognitiva">Intelectual/Cognitiva</option>
+                    <option value="Fisica">Fisica</option>
+                    <option value="Outra">Outra</option>
+                </select>
+                <select class="classic" name="crianca">
+                    <option value="" disabled selected>CRIANÇAS DE 0 A 9 ANOS, COM QUEM FICA?</option>
+                    <option value="Creche">Creche</option>
+                    <option value="Adulto Responsável">Adulto Responsável</option>
+                    <option value="Outra(s) Criança(s)">Outra(s) Criança(s)</option>
+                    <option value="Adolescente">Adolescente</option>
+                    <option value="Sozinha">Sozinha</option>
+                    <option value="Outro">Outro</option>
+                </select>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6 form-check">
+                        <input class="form-check-input" type="checkbox" id="check-input-plano-de-saude">
+                        <label class="form-check-label" for="check-input-plano-de-saude">
+                            Plano de saúde
+                        </label>
+                    </div>
+                    <div class="col form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="check-input-mudanca">
+                        <label class="form-check-label" for="check-input-mudanca">
+                            Mudança
+                        </label>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-6 form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="check-input-obito">
+                        <label class="form-check-label" for="check-input-obito">
+                            Óbito
+                        </label>
+                    </div>
+                </div>
+                </div>
+
+                <br>
+                <div>
+                    <span id="mensagem"></span>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <a href="cadastro-moradia.html">
+                            <input type="button" value="Anterior" class="form-control btn btn-visitas">
+                        </a>
+                    </div>
+                    <div class="col">
+                        
+                        <input onclick="enviaDados()" type="button" value="Proximo" class="form-control btn btn-visitas">
+                        
+                    </div>
+                </div>
+            </div>
+        </form>
+        <script>
+          function enviaDados() {
+            var xhttp;
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+                if (this.responseText=="OK!"){
+                  alert("Dados salvos com sucesso!");
+                  window.location.href = "cadastro-saude.html"
+                }
+                else {
+                  document.getElementById("mensagem").innerHTML = this.responseText;
+                }
+              }
+            };
+            numeroSus = document.getElementsByName('numeroSus')[0].value;
+            parentesco = document.getElementsByName('parentesco')[0].value;
+            escolaridade = document.getElementsByName('escolaridade')[0].value;
+            sexo = document.getElementsByName('sexo')[0].value;
+            deficiencia = document.getElementsByName('deficiencia')[0].value;
+            crianca = document.getElementsByName('crianca')[0].value;
+
+            plano_saude = document.getElementById('check-input-plano-de-saude').checked;
+            obito = document.getElementById('check-input-obito').checked;
+            mudanca = document.getElementById('check-input-mudanca').checked;
+
+            let dados_obj =
+              {
+                "num_sus":numeroSus,
+                "col_parentesco":parentesco,
+                "cod_escolaridade":escolaridade,
+                "col_sexo":sexo,
+                "cod_deficiencia":deficiencia,
+                "col_crianca":crianca,
+                "col_plano_saude":plano_saude, 
+                "col_obito":obito,
+                "col_mudanca": mudanca,
+            }
+            console.log(dados_obj);
+            url = "http://localhost/agente/usuario/create.php";
+            let dados_json = JSON.stringify(dados_obj);
+            url_dados = url+"?dados="+dados_json;
+            console.log(url_dados);
+            xhttp.open("GET", url+"?dados="+dados_json, true);
+            xhttp.send();
+          }
+      </script>
+    </div>
+</body>
+</html>

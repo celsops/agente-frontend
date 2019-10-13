@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/notificacoes.css">
+    <title>Notificações</title>
+
+</head>
+<body>
+    <!-- side bar -->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+        <img src="../icon/arrow_back.svg" class="icon" alt="">
+        </a>
+        <a href="mapa.html">Mapa</a>
+        <a href="cadastro-moradia.html">Visita</a>
+        <a href="notificacoes.html">Notificações</a>
+        <a href="painel.html">Painel</a>
+    </div>
+    <nav class="navbar">
+        <span style="font-size:30px;cursor:pointer;" onclick="openNav()">
+            <img class="icon" src="../icon/reorder.svg" alt="" />
+            <span class="title">Notificações</span>
+        </span>
+    </nav>
+    
+    <!-- conteudo -->
+    <div class="conteudo container">
+        <div class="container" style="text-align: center">
+            <a href="nova-notificacao.html">
+                <button class="btn btn-nova-notificacao">
+                    <img src="../icon/adicao.svg" class="icon-add" alt="">
+                    Nova notificação
+                </button>
+            </a>
+            <div style="margin-top: 3%;">
+                <small class="cor-fonte-noti">Visualização de alertas da população</small>
+                <hr style="margin-top:5px">
+            </div>
+        </div>
+        <div>
+            <div class="card-notificacao container" >
+                <div style="padding-bottom: 8px;">
+                    <div style="float:right">
+                        <a href="">
+                            <small style="padding: 4px; color:#C7C7C7;">Visualizar dados do usuário</small>
+                            <img src="../icon/arrow_right.svg" class="icon-arrow-right" alt="">
+                        </a>
+                    </div>
+                    <br>
+                    <div style="margin-left: 5px; padding-top: 10px">
+                        <img src="../icon/user.svg" class="icon" alt="">
+                        <span class="cor-fonte-noti">Usuário</span>
+                    </div>
+                </div>
+                <div style="">
+                    <textarea disabled  placeholder="Mensagem"  rows="3" class="form-control text-area-style" ></textarea>
+                </div>          
+    
+                <div class="row" style="margin-bottom: 0px;">
+                    <div class="col">
+                        <button type="button" class="btn btn-danger" style="border-radius: 0px;width: 100%; " >Não validar </button>
+                    </div>
+                    <div class="col">
+                        <button  type="button" class="btn btn-info" style="border-radius: 0px;width: 100%;" >Validar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+    
+    <script src="../js/sidebar.js"></script>
+</html>

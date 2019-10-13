@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/visitas.css">
+    <script src="../js/sidebar.js"></script>
+    <title>Cadastro Saúde</title>
+    <style>
+        body{
+            color: #878787;
+        }
+        input::placeholder{
+            color: #B8B8B8
+        }
+        input{
+            background-color: #E6E6E6;
+        }
+        .btn-visitas{
+            background-color: #00BCD4;
+            border:none;
+            color:#ffffff;
+
+        }
+    </style>
+</head>
+<body>
+    <!-- side bar -->
+    <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+            <img src="../icon/arrow_back.svg" class="icon" alt="">
+            </a>
+            <a href="mapa.html">Mapa</a>
+            <a href="cadastro-moradia.html">Visita</a>
+            <a href="notificacoes.html">Notificações</a>
+            <a href="painel.html">Painel</a>
+    </div>
+    <nav class="navbar">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">
+        <img class="icon" src="../icon/reorder.svg" alt="">
+        <span class="title">Cadastro Saúde</span>
+        </span>
+    </nav>
+    <div class="container">
+        <img src="../img/etapa3.png" alt="" class="etapa">
+        <form>
+            <div class="form-group">
+                <input type="number" class="form-control"  placeholder="Nº SUS" name="numeroSus">
+                <select class="classic" name="doenca_cardiaca">
+                    <option value="" disabled selected>Doença Cardiaca</option>
+                    <option value="Nenhuma doença cardíaca">Nenhuma doença cardíaca</option>
+                    <option value="Insuficiência cardíaca">Insuficiência cardíaca</option>
+                    <option value="Outra">Outra</option>
+                    <option value="Não sabe">Não sabe</option>
+                </select>
+                <select class="classic" name="peso">
+                    <option value="" disabled selected>Peso</option>
+                    <option value="Acima do peso">Acima do peso</option>
+                    <option value="Peso Adequado">Peso Adequado</option>
+                    <option value="Abaixo do peso">Abaixo do peso</option>
+                </select>
+                <select class="classic" name="doenca_respiratoria">
+                    <option value="" disabled selected>Doença respiratória</option>
+                    <option value="Nenhuma doença respiratória">Nenhuma doença respiratória</option>
+                    <option value="Asma">Asma</option>
+                    <option value="DPOC/Enfisema">DPOC/Enfisema</option>
+                    <option value="Outra">Outra</option>
+                    <option value="Não sabe">Não sabe</option>
+                </select>
+                <select class="classic" name="problemas_rins">
+                    <option value="" disabled selected>Problemas nos rins</option>
+                    <option value="Nenhum problemas nos rins">Nenhum problemas nos rins</option>
+                    <option value="Insuficiência Renal">Insuficiência Renal</option>
+                    <option value="Não sabe">Não sabe</option>
+                    <option value="Outro">Outro</option>
+                </select>
+
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="check-input-fumante">
+                        <label class="form-check-label" for="check-input-fumante">
+                            Fumante
+                        </label>
+                    </div>
+                    <div class="col form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="check-input-mudanca-etapa3">
+                        <label class="form-check-label" for="check-input-mudanca-etapa3">
+                            Mudança
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="check-input-alcool">
+                            <label class="form-check-label" for="check-input-alcool">
+                                Usa álcool
+                            </label>
+                        </div>
+                        <div class="col form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="check-input-diabetes">
+                            <label class="form-check-label" for="check-input-diabetes">
+                                Diabetes
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="check-input-drogas">
+                        <label class="form-check-label" for="check-input-drogas">
+                            Drogas
+                        </label>
+                    </div>
+                    <div class="col form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="check-input-avc">
+                        <label class="form-check-label" for="check-input-avc">
+                            AVC/Derrame
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="check-input-hipertenso">
+                        <label class="form-check-label" for="check-input-hipertenso">
+                            Hipertenso
+                        </label>
+                    </div>
+                    <div class="col form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="check-input-cancer">
+                        <label class="form-check-label" for="check-input-cancer">
+                            Câncer
+                        </label>
+                    </div>
+                </div>
+                </div>
+                <br>
+                <div>
+                    <span id="mensagem">
+
+                    </span>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <a href="cadastro-individual.html">
+                            <input type="button" value="Anterior" class="form-control btn btn-visitas">
+                        </a>
+                    </div>
+                    <div class="col">
+                        
+                        <input onclick="enviaDados()" type="button" value="Proximo" class="form-control btn btn-visitas">
+                        
+                    </div>
+              </div>
+          </div>
+        </form>
+        <script>
+          function enviaDados() {
+            var xhttp;
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+                if (this.responseText=="OK!"){
+                  alert("Dados salvos com sucesso!");
+                  window.location.href = "cadastro-rua.html"
+                }
+                else {
+                  document.getElementById("mensagem").innerHTML = this.responseText;
+                }
+              }
+            };
+            doenca_cardiaca = document.getElementsByName('doenca_cardiaca')[0].value;
+            doenca_respiratoria = document.getElementsByName('doenca_respiratoria')[0].value;
+            problemas_rins = document.getElementsByName('problemas_rins')[0].value;
+            numeroSus = document.getElementsByName('numeroSus')[0].value;
+            peso = document.getElementsByName('peso')[0].value;
+
+            mudanca = document.getElementById('check-input-mudanca-etapa3').checked;
+            diabetes = document.getElementById('check-input-diabetes').checked;
+            fumante = document.getElementById('check-input-fumante').checked;
+            alcool = document.getElementById('check-input-alcool').checked;
+            hipertenso = document.getElementById('check-input-hipertenso').checked;
+            drogas = document.getElementById('check-input-drogas').checked;
+            cancer = document.getElementById('check-input-cancer').checked;
+            avc = document.getElementById('check-input-avc').checked;
+
+            let dados_obj =
+              {
+                "num_sus":numeroSus,
+                "col_peso":peso,
+                "col_doenca_cardiaca":doenca_cardiaca,
+                "col_doenca_respiratoria":doenca_respiratoria,
+                "col_problema_rins":problemas_rins,
+                "col_fumante":fumante,
+                "col_alcool":alcool,
+                "col_avc": avc,
+                "col_drogas":drogas,
+                "col_hipertensao":hipertenso,
+                "col_diabetes": diabetes,
+                "col_cancer":cancer,
+                "col_mudanca": mudanca,
+            }
+            console.log(dados_obj);
+            let url = "http://localhost/agente/saude/create.php";
+            let dados_json = JSON.stringify(dados_obj);
+            url_dados = url+"?dados="+dados_json;
+            console.log(url_dados);
+            xhttp.open("GET", url+"?dados="+dados_json, true);
+            xhttp.send();
+          }
+      </script>
+      </div>
+  </body>
+</html>

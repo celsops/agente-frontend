@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/nova-notificacao.css">
+    <script src="../js/sidebar.js"></script>
+
+    <title>Nova notificação</title>
+    
+</head>
+<body>
+    <!-- side bar -->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+        <img src="../icon/arrow_back.svg" class="icon" alt="">
+        </a>
+        <a href="mapa.html">Mapa</a>
+        <a href="cadastro-moradia.html"">Visita</a>
+        <a href="notificacoes.html">Notificações</a>
+        <a href="painel.html">Painel</a>
+    </div>
+    <nav class="navbar">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">
+            <img class="icon" src="../icon/reorder.svg" alt="">
+            <span class="title">Nova Notificação</span>
+        </span>
+    </nav>
+    <div class="container">
+        <div style="margin-top: 10px;">
+            <form>
+                <select class="form-group classic">
+                    <option>Grupo</option>
+                </select>
+                <br>
+                <div class="form-group">
+                    <textarea rows="4" class="form-control text-area-descricao" placeholder="Digite sua mensagem aqui"></textarea>
+                </div>
+                <input class="form-control btn btn-info" type="submit" value="Notificar">
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>

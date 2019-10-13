@@ -1,0 +1,37 @@
+body{
+    background-color: #037E8E;
+}
+.logo{
+    padding-bottom: 10px;
+}
+a{
+    color:#ffffff;
+}
+.btn-entrar{
+    background-color: #2AD7D1;
+    color:#ffffff;
+    border:none;
+    width: 100%;
+}
+.icon{
+    color:#CCCCCC;
+    font-size: 24px;
+    height: 24px;
+    fill:#cccccc;
+    width: 24px;
+}
+.form-container{
+    padding: 0px 40px 0px 40px
+}
+.form-input{
+    border:none;   
+    height:calc(2.25rem + 2px);
+    padding:.375rem .75rem;
+    font-size:1rem;line-height:1.5;
+    color:#495057;
+
+}
+#mensagem{
+    color:black;
+    font-weight: 700;
+}
