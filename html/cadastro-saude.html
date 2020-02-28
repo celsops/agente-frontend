@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -158,62 +158,62 @@
               </div>
           </div>
         </form>
-        <script>
-          function enviaDados() {
-            var xhttp;
-            xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-              if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText);
-                if (this.responseText=="OK!"){
-                  alert("Dados salvos com sucesso!");
-                  window.location.href = "cadastro-rua.html"
-                }
-                else {
-                  document.getElementById("mensagem").innerHTML = this.responseText;
-                }
-              }
-            };
-            doenca_cardiaca = document.getElementsByName('doenca_cardiaca')[0].value;
-            doenca_respiratoria = document.getElementsByName('doenca_respiratoria')[0].value;
-            problemas_rins = document.getElementsByName('problemas_rins')[0].value;
-            numeroSus = document.getElementsByName('numeroSus')[0].value;
-            peso = document.getElementsByName('peso')[0].value;
-
-            mudanca = document.getElementById('check-input-mudanca-etapa3').checked;
-            diabetes = document.getElementById('check-input-diabetes').checked;
-            fumante = document.getElementById('check-input-fumante').checked;
-            alcool = document.getElementById('check-input-alcool').checked;
-            hipertenso = document.getElementById('check-input-hipertenso').checked;
-            drogas = document.getElementById('check-input-drogas').checked;
-            cancer = document.getElementById('check-input-cancer').checked;
-            avc = document.getElementById('check-input-avc').checked;
-
-            let dados_obj =
-              {
-                "num_sus":numeroSus,
-                "col_peso":peso,
-                "col_doenca_cardiaca":doenca_cardiaca,
-                "col_doenca_respiratoria":doenca_respiratoria,
-                "col_problema_rins":problemas_rins,
-                "col_fumante":fumante,
-                "col_alcool":alcool,
-                "col_avc": avc,
-                "col_drogas":drogas,
-                "col_hipertensao":hipertenso,
-                "col_diabetes": diabetes,
-                "col_cancer":cancer,
-                "col_mudanca": mudanca,
-            }
-            console.log(dados_obj);
-            let url = "http://localhost/agente/saude/create.php";
-            let dados_json = JSON.stringify(dados_obj);
-            url_dados = url+"?dados="+dados_json;
-            console.log(url_dados);
-            xhttp.open("GET", url+"?dados="+dados_json, true);
-            xhttp.send();
-          }
-      </script>
       </div>
   </body>
+<script>
+    function enviaDados() {
+    var xhttp;
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        console.log(this.responseText);
+        if (this.responseText=="OK!"){
+            alert("Dados salvos com sucesso!");
+            window.location.href = "cadastro-rua.html"
+        }
+        else {
+            document.getElementById("mensagem").innerHTML = this.responseText;
+        }
+        }
+    };
+    let doenca_cardiaca = document.getElementsByName('doenca_cardiaca')[0].value;
+    let doenca_respiratoria = document.getElementsByName('doenca_respiratoria')[0].value;
+    let problemas_rins = document.getElementsByName('problemas_rins')[0].value;
+    let numeroSus = document.getElementsByName('numeroSus')[0].value;
+    let peso = document.getElementsByName('peso')[0].value;
+    let mudanca = document.getElementById('check-input-mudanca-etapa3').checked;
+    let diabetes = document.getElementById('check-input-diabetes').checked;
+    let fumante = document.getElementById('check-input-fumante').checked;
+    let alcool = document.getElementById('check-input-alcool').checked;
+    let hipertenso = document.getElementById('check-input-hipertenso').checked;
+    let drogas = document.getElementById('check-input-drogas').checked;
+    let cancer = document.getElementById('check-input-cancer').checked;
+    let avc = document.getElementById('check-input-avc').checked;
+
+    let dados_obj =
+        {
+        "num_sus":numeroSus,
+        "col_peso":peso,
+        "col_doenca_cardiaca":doenca_cardiaca,
+        "col_doenca_respiratoria":doenca_respiratoria,
+        "col_problema_rins":problemas_rins,
+        "col_fumante":fumante,
+        "col_alcool":alcool,
+        "col_avc": avc,
+        "col_drogas":drogas,
+        "col_hipertensao":hipertenso,
+        "col_diabetes": diabetes,
+        "col_cancer":cancer,
+        "col_mudanca": mudanca,
+    }
+    // console.log(dados_obj); http://agentedesaude.orgfree.com
+    // let url = "http://localhost/agente/saude/create.php";
+    let url = "http://agentedesaude.orgfree.com/saude/create.php";
+    let dados_json = JSON.stringify(dados_obj);
+    let url_dados = url+"?dados="+dados_json;
+    // console.log(url_dados);
+    xhttp.open("GET", url+"?dados="+dados_json, true);
+    xhttp.send();
+    }
+</script>
 </html>

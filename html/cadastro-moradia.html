@@ -77,53 +77,54 @@
 
             </div>
         </form>
-        <script>
-          function enviaDados() {
-            var xhttp;
-            xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-              if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText);
-                if (this.responseText=="OK!"){
-                  alert("Dados salvos com sucesso!");
-                  window.location.href = "cadastro-individual.html"
-                }
-                else {
-                  document.getElementById("mensagem").innerHTML = this.responseText;
-                }
-              }
-            };
-
-            cep = document.getElementsByName('cep')[0].value;
-            agua = document.getElementsByName('agua')[0].value;
-            numeroCasa = document.getElementsByName('numeroCasa')[0].value;
-            lixo = document.getElementsByName('lixo')[0].value;
-            esgoto = document.getElementsByName('esgoto')[0].value;
-            animais = document.getElementsByName('animais')[0].value;
-            numeroSus = document.getElementsByName('numeroSus')[0].value;
-            rua = document.getElementsByName('rua')[0].value;
-
-            let dados_obj =
-              {
-                "col_cep":cep,
-                "col_agua":agua,
-                "col_numero_casa":numeroCasa,
-                "col_lixo":lixo,
-                "col_esgoto":esgoto,
-                "col_tem_animal":animais,
-                "numero_sus":numeroSus,
-                "col_rua_moradia":rua
-            }
-            console.log(dados_obj);
-            url = "http://localhost/agente/moradia/create.php";
-            let dados_json = JSON.stringify(dados_obj);
-            url_dados = url+"?dados="+dados_json;
-            console.log(url_dados);
-            xhttp.open("GET", url+"?dados="+dados_json, true);
-            xhttp.send();
-          }
-      </script>
     </div>
 
 </body>
+<script>
+  function enviaDados() {
+    var xhttp;
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log(this.responseText);
+        if (this.responseText=="OK!"){
+          alert("Dados salvos com sucesso!");
+          window.location.href = "cadastro-individual.html"
+        }
+        else {
+          document.getElementById("mensagem").innerHTML = this.responseText;
+        }
+      }
+    };
+
+    let cep = document.getElementsByName('cep')[0].value;
+    let agua = document.getElementsByName('agua')[0].value;
+    let numeroCasa = document.getElementsByName('numeroCasa')[0].value;
+    let lixo = document.getElementsByName('lixo')[0].value;
+    let esgoto = document.getElementsByName('esgoto')[0].value;
+    let animais = document.getElementsByName('animais')[0].value;
+    let numeroSus = document.getElementsByName('numeroSus')[0].value;
+    let rua = document.getElementsByName('rua')[0].value;
+    
+    let dados_obj =
+      {
+        "col_cep":cep,
+        "col_agua":agua,
+        "col_numero_casa":numeroCasa,
+        "col_lixo":lixo,
+        "col_esgoto":esgoto,
+        "col_tem_animal":animais,
+        "numero_sus":numeroSus,
+        "col_rua_moradia":rua
+    }
+    // console.log(dados_obj); 
+    // url = "http://localhost/agente/moradia/create.php";
+    let url = "http://agentedesaude.orgfree.com/moradia/create.php";
+    let dados_json = JSON.stringify(dados_obj);
+    url_dados = url+"?dados="+dados_json;
+    // console.log(url_dados);
+    xhttp.open("GET", url+"?dados="+dados_json, true);
+    xhttp.send();
+  }
+</script>
 </html>

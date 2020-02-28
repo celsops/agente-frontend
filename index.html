@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="css/login.css">
     <title>Login</title>
 
 </head>
 <body>
-    <img class="logo" src="img/logo.png" >
+    
+    <img class="logo img-fluid" src="img/logo.png" >
     <form>
         <div class="form-container">
             <div class="input-group mb-3">
@@ -21,25 +21,25 @@
                         <!-- <i class="icon fas fa-user"></i> -->
                         <img src="icon/user.svg" class="icon" alt="Usuario">
                     </span>
-                    <input type="email"  class="form-input "  placeholder="Email" name="email" required autofocus >
                 </div>
+                <input type="email"  class="form-input "  placeholder="Email" name="email" required autofocus >
             </div>
             <div class="input-group mb-3">
-                <div class="input-group-prepend">
+                <div class="input-group-prepend" >
                     <span class="input-group-text">
                         <!-- <i class="icon fas fa-lock"></i> -->
                         <img src="icon/lock.svg" alt="cadeado" class="icon">
                     </span>
-                      <input type="password"  class="form-input" placeholder="Senha" name="senha" required>
                 </div>
+                <input type="password"  class="form-input" placeholder="Senha" name="senha" required>
             </div>
-            <center>
-                <div>
-                    <span id="mensagem"></span>
-                </div>
-            </center>
+            
+            <div>
+                <span id="mensagem"></span>
+            </div>
+            
 
-            <div >
+            <div  class="input-group mb-3">
                 <input onclick="enviaDados()" class="btn btn-entrar" type="button" value="Entrar">
             </div>
 
@@ -49,39 +49,46 @@
                     <span>Esqueci a senha</span>
                 </div>
             </a>
+            <a href="html/cadastro_agente.html">
+                <div class="d-flex justify-content-center mt-3 login_containe">
+                    <span>Cadastre-se</span>
+                </div>
+            </a>
         </div>
     </form>
-    <script>
-        function enviaDados() {
-          var xhttp;
-          xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-              console.log(this.responseText);
-              if (this.responseText=="OK!"){
-                alert("Login realizado com sucesso!");
-                window.location.href = "html/main.html"
-              }
-              else {
-                document.getElementById("mensagem").innerHTML = this.responseText;
-              }
-            }
-          };
-
-          email = document.getElementsByName('email')[0].value;
-          senha = document.getElementsByName('senha')[0].value;
-
-          let dados_obj =
-            {
-              "col_email":email,
-              "col_senha":senha
-            }
-          console.log(dados_obj);
-          url = "http://localhost/agente/usuario/login.php";
-          let dados_json = JSON.stringify(dados_obj);
-          xhttp.open("GET", url+"?dados="+dados_json, true);
-          xhttp.send();
-        }
-    </script>
 </body>
+<script>
+    function enviaDados() {
+        var xhttp;
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            // console.log(this.responseText);
+            if (this.responseText=="OK!"){
+            // alert("Login realizado com sucesso!");
+            window.location.href = "html/main.html"
+            }
+            else {
+            document.getElementById("mensagem").innerHTML = this.responseText;
+            }
+        }
+        };
+
+        email = document.getElementsByName('email')[0].value;
+        senha = document.getElementsByName('senha')[0].value;
+
+        let dados_obj =
+        {
+            "col_email":email,
+            "col_senha":senha
+        }
+        // console.log(dados_obj);
+        // url = "http://localhost/agente/usuario/login.php";
+        let url = "http://agentedesaude.orgfree.com/usuario/login.php";
+        let dados_json = JSON.stringify(dados_obj);
+        xhttp.open("GET", url+"?dados="+dados_json, true);
+        xhttp.send();
+        console.log(url+"?dados="+dados_json);
+    }
+</script>
 </html>

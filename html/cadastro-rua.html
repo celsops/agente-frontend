@@ -90,51 +90,51 @@
                 <input onclick="enviaDados()" type="button" value="Finalizar" class="form-control btn btn-finalizar">
             </div>
           </form>
-          <script>
-            function enviaDados() {
-              var xhttp;
-              xhttp = new XMLHttpRequest();
-              xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                  console.log(this.responseText);
-                  if (this.responseText=="OK!"){
-                    alert("Dados salvos com sucesso!");
-                    window.location.href = "main.html"
-                  }
-                  else {
-                    document.getElementById("mensagem").innerHTML = this.responseText;
-                  }
-                }
-              };
-
-              numeroSus = document.getElementsByName('numeroSus')[0].value;
-              tempo_na_rua = document.getElementsByName('tempo_na_rua')[0].value;
-              alimenta_dia = document.getElementsByName('alimenta_dia')[0].value;
-              origem_alimentacao = document.getElementsByName('origem_alimentacao')[0].value;
-              higiene_pessoal = document.getElementsByName('higiene_pessoal')[0].value;
-
-              recebe_beneficio = document.getElementById('check-input-recebe-beneficio').checked;
-              possui_referencia_familiar = document.getElementById('check-input-referencia-familiar').checked;
-
-              let dados_obj =
-                {
-                  "num_sus":numeroSus,
-                  "col_tempo_rua":tempo_na_rua,
-                  "col_alimenta_dia":alimenta_dia,
-                  "col_higiene_pessoal":higiene_pessoal,
-                  "col_recebe_beneficio":recebe_beneficio,
-                  "col_origem_alimentacao":origem_alimentacao,
-                  "col_possui_referencia_familiar":possui_referencia_familiar
-              }
-              // console.log(dados_obj);
-              url = "http://localhost/agente/rua/create.php";
-              let dados_json = JSON.stringify(dados_obj);
-              url_dados = url+"?dados="+dados_json;
-              console.log(url_dados);
-              xhttp.open("GET", url+"?dados="+dados_json, true);
-              xhttp.send();
-            }
-        </script>
     </div>
 </body>
+<script>
+    function enviaDados() {
+        var xhttp;
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            if (this.responseText=="OK!"){
+            alert("Dados salvos com sucesso!");
+            window.location.href = "main.html"
+            }
+            else {
+            document.getElementById("mensagem").innerHTML = this.responseText;
+            }
+        }
+        };
+
+        let numeroSus = document.getElementsByName('numeroSus')[0].value;
+        let tempo_na_rua = document.getElementsByName('tempo_na_rua')[0].value;
+        let alimenta_dia = document.getElementsByName('alimenta_dia')[0].value;
+        let origem_alimentacao = document.getElementsByName('origem_alimentacao')[0].value;
+        let higiene_pessoal = document.getElementsByName('higiene_pessoal')[0].value;
+        let recebe_beneficio = document.getElementById('check-input-recebe-beneficio').checked;
+        let possui_referencia_familiar = document.getElementById('check-input-referencia-familiar').checked;
+
+        let dados_obj =
+        {
+            "num_sus":numeroSus,
+            "col_tempo_rua":tempo_na_rua,
+            "col_alimenta_dia":alimenta_dia,
+            "col_higiene_pessoal":higiene_pessoal,
+            "col_recebe_beneficio":recebe_beneficio,
+            "col_origem_alimentacao":origem_alimentacao,
+            "col_possui_referencia_familiar":possui_referencia_familiar
+        }
+        // console.log(dados_obj); 
+        // url = "http://localhost/agente/rua/create.php";
+        let url = "http://agentedesaude.orgfree.com/rua/create.php";
+        let dados_json = JSON.stringify(dados_obj);
+        url_dados = url+"?dados="+dados_json;
+        // console.log(url_dados);
+        xhttp.open("GET", url+"?dados="+dados_json, true);
+        xhttp.send();
+    }
+</script>
 </html>

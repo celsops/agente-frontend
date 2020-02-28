@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -92,6 +92,7 @@
                 </select>
                 <select class="classic" name="deficiencia">
                     <option value="" disabled selected>Deficiência</option>
+                    <option value="Nao possui">Nenhuma</option>
                     <option value="Visual">Visual</option>
                     <option value="Auditiva">Auditiva</option>
                     <option value="Intelectual/Cognitiva">Intelectual/Cognitiva</option>
@@ -100,6 +101,7 @@
                 </select>
                 <select class="classic" name="crianca">
                     <option value="" disabled selected>CRIANÇAS DE 0 A 9 ANOS, COM QUEM FICA?</option>
+                    <option value="Nenhuma">Não tem criança</option>
                     <option value="Creche">Creche</option>
                     <option value="Adulto Responsável">Adulto Responsável</option>
                     <option value="Outra(s) Criança(s)">Outra(s) Criança(s)</option>
@@ -152,54 +154,54 @@
                 </div>
             </div>
         </form>
-        <script>
-          function enviaDados() {
-            var xhttp;
-            xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-              if (this.readyState == 4 && this.status == 200) {
-                console.log(this.responseText);
-                if (this.responseText=="OK!"){
-                  alert("Dados salvos com sucesso!");
-                  window.location.href = "cadastro-saude.html"
-                }
-                else {
-                  document.getElementById("mensagem").innerHTML = this.responseText;
-                }
-              }
-            };
-            numeroSus = document.getElementsByName('numeroSus')[0].value;
-            parentesco = document.getElementsByName('parentesco')[0].value;
-            escolaridade = document.getElementsByName('escolaridade')[0].value;
-            sexo = document.getElementsByName('sexo')[0].value;
-            deficiencia = document.getElementsByName('deficiencia')[0].value;
-            crianca = document.getElementsByName('crianca')[0].value;
-
-            plano_saude = document.getElementById('check-input-plano-de-saude').checked;
-            obito = document.getElementById('check-input-obito').checked;
-            mudanca = document.getElementById('check-input-mudanca').checked;
-
-            let dados_obj =
-              {
-                "num_sus":numeroSus,
-                "col_parentesco":parentesco,
-                "cod_escolaridade":escolaridade,
-                "col_sexo":sexo,
-                "cod_deficiencia":deficiencia,
-                "col_crianca":crianca,
-                "col_plano_saude":plano_saude, 
-                "col_obito":obito,
-                "col_mudanca": mudanca,
-            }
-            console.log(dados_obj);
-            url = "http://localhost/agente/usuario/create.php";
-            let dados_json = JSON.stringify(dados_obj);
-            url_dados = url+"?dados="+dados_json;
-            console.log(url_dados);
-            xhttp.open("GET", url+"?dados="+dados_json, true);
-            xhttp.send();
-          }
-      </script>
     </div>
 </body>
+<script>
+    function enviaDados() {
+        var xhttp;
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            // console.log(this.responseText);
+            if (this.responseText=="OK!"){
+                alert("Dados salvos com sucesso!");
+                window.location.href = "cadastro-saude.html"
+            }
+            else {
+                document.getElementById("mensagem").innerHTML = this.responseText;
+            }
+            }
+        };
+        let numeroSus = document.getElementsByName('numeroSus')[0].value;
+        let parentesco = document.getElementsByName('parentesco')[0].value;
+        let escolaridade = document.getElementsByName('escolaridade')[0].value;
+        let sexo = document.getElementsByName('sexo')[0].value;
+        let deficiencia = document.getElementsByName('deficiencia')[0].value;
+        let crianca = document.getElementsByName('crianca')[0].value;
+        let plano_saude = document.getElementById('check-input-plano-de-saude').checked;
+        let obito = document.getElementById('check-input-obito').checked;
+        let mudanca = document.getElementById('check-input-mudanca').checked;
+
+        let dados_obj =
+            {
+            "num_sus":numeroSus,
+            "col_parentesco":parentesco,
+            "cod_escolaridade":escolaridade,
+            "col_sexo":sexo,
+            "cod_deficiencia":deficiencia,
+            "col_crianca":crianca,
+            "col_plano_saude":plano_saude, 
+            "col_obito":obito,
+            "col_mudanca": mudanca,
+        }
+        // console.log(dados_obj); 
+        // url = "http://localhost/agente/usuario/create.php";
+        let url = "http://agentedesaude.orgfree.com/usuario/create.php";
+        let dados_json = JSON.stringify(dados_obj);
+        url_dados = url+"?dados="+dados_json;
+        // console.log(url_dados);
+        xhttp.open("GET", url+"?dados="+dados_json, true);
+        xhttp.send();
+    }
+</script>
 </html>
