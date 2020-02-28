@@ -12,8 +12,22 @@
     </author>
     <content src="index.html" />
 
-    <preference name="DisallowOverscroll" value="true" />
+    <!-- <preference name="DisallowOverscroll" value="true" /> -->
     <plugin name="cordova-plugin-network-information" source="npm" spec="~1.3.3" />
+
+    <access origin="*" />
+    <plugin name="cordova-plugin-whitelist" version="1" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+
     <platform name="android">
         <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
@@ -21,17 +35,8 @@
         <icon density="xhdpi" src="www/res/icon/android/drawable-xhdpi-icon.png" />
         <icon density="xxhdpi" src="www/res/icon/android/drawable-xxhdpi-icon.png" />
         <icon density="xxxhdpi" src="www/res/icon/android/drawable-xxxhdpi-icon.png" />
-        <access origin="*" />
-        <allow-intent href="http://*/*" />
-        <allow-intent href="https://*/*" />
-        <allow-intent href="tel:*" />
-        <allow-intent href="sms:*" />
-        <allow-intent href="mailto:*" />
-        <allow-intent href="geo:*" />
-        <feature name="NetworkStatus">
-            <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
-        </feature>
-        <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
+        
+        <!-- <allow-intent href="market:*" /> -->
     </platform>
 
     
