@@ -18,6 +18,8 @@ funcinando e enviando os dados para um servidor<p/>
 de espalhar conhecimento, tanto sobre o projeto quanto uma das possíveis forma de executa-lo.<p/> 
 
 <img src="wireframes/index.png"/>
+<img src="wireframes/main.png"/>
+<img src="wireframes/recuperar_senha.png"/>
 
 
 # Objetivo final
